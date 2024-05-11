@@ -1,0 +1,5 @@
+backend/build/**
+minifier/node_modules/**
+minifier/package-lock.json
+preprocessing/input.txt
+*.jar

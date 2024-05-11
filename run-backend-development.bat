@@ -1,0 +1,16 @@
+@ECHO OFF
+
+SET CURRENT_DIR=%~dp0
+SET FRONTEND_DIR=%CURRENT_DIR%
+SET BACKEND_DIR=%CURRENT_DIR%backend
+
+ECHO Running backend
+ECHO %CURRENT_DIR%
+ECHO %FRONTEND_DIR%
+ECHO %BACKEND_DIR%
+
+cd /d %BACKEND_DIR%
+
+ECHO Press Ctrl + C to stop backend
+TIMEOUT /T 5
+gradlew.bat bootRun

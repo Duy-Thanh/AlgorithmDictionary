@@ -1,0 +1,65 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.4'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+repositories {
+    mavenCentral()
+}
+
+group = 'com.algorithmswiki.apps.backend'
+version = '1.0.0.0-java_x64'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+configurations { 
+   all*.exclude group:'org.springframework.boot', module:'spring-boot-starter-logging' 
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.session:spring-session-core'
+	implementation 'org.springframework.boot:spring-boot-starter-json'
+	implementation 'com.github.oshi:oshi-core:6.6.0'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1' // For JWT
+	implementation "jakarta.xml.bind:jakarta.xml.bind-api:4.0.2"
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	// implementation 'commons-codec:commons-codec:1.15'
+	runtimeOnly 'org.glassfish.jaxb:jaxb-runtime:4.0.5'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+compileJava {
+    options.compilerArgs += ['-parameters']
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.algorithmswiki.apps.backend.backend.BackendApplication'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
