@@ -338,36 +338,59 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-10 content algorithmContent" id="algorithmContent" style="display: none; overflow: auto; border-radius: 20px;">
-                    <div class="nameAlgorithm">
+                <div class="col-lg-10 content algorithmContent" id="algorithmContent" 
+                    style="display: none; overflow: auto; border-radius: 20px;">
+                    <div id="nameAlgorithm" class="nameAlgorithm">
                         <div style="margin-top: 2vh;"></div>
                         <p id="name"></p>
+                        <!-- CONTENTS -->
+                        <div style="padding-top: 20px;"></div>
+                        <div style="border-style: solid; height: 25vh; width: 40vw; border-color: darkgray; border-radius: 10px;">
+                            <div style="padding: 10px">
+                                <strong style="font-size: 18px; font: SF-Pro-Display-Bold;">Mục lục</strong>
+                                <div style="margin-top: -6px;"></div>
+                                <hr>
+                                <div style="margin-top: -4px; padding-left: 20px; padding-right: 20px;">
+                                    <a href="#definitionAlgorithm">1. Khái niệm</a>
+                                </div>
+                                <div style="padding-top: 4px; padding-left: 20px; padding-right: 20px;">
+                                    <a href="#howtoworkAlgorithm">2. Cách hoạt động</a>
+                                </div>
+                                <div style="padding-top: 4px; padding-left: 20px; padding-right: 20px;">
+                                    <a href="#applicationAlgorithm">3. Ứng dụng</a>
+                                </div>
+                                <div style="padding-top: 4px; padding-left: 20px; padding-right: 20px;">
+                                    <a href="#exampleAlgorithm">4. Ví dụ minh họa, mã giả, mã mẫu</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-bottom: 20px;"></div>
                     </div>
-                    <br><br>
-                    <div class="definitionAlgorithm">
-                        <h2>Khái niệm</h2>
+                    <br>
+                    <div id="definitionAlgorithm" class="definitionAlgorithm">
+                        <h2>Khái niệm <a style="font-size: 14px;" href="#nameAlgorithm">[về đầu trang]</a></h2>
                         <br>
                         <p id="definition" style="padding-left: 40px; padding-right: 20px;"></p>
                     </div>
-                    <div class="howtoworkAlgorithm">
-                        <h3>Cách hoạt động</h3>
+                    <div id="howtoworkAlgorithm" class="howtoworkAlgorithm">
+                        <h3>Cách hoạt động <a style="font-size: 14px;" href="#nameAlgorithm">[về đầu trang]</a></h3>
                         <br>
                         <p id="howtowork" style="padding-left: 40px; padding-right: 20px;"></p>
                     </div>
-                    <div class="applicationAlgorithm">
-                        <h3>Ứng dụng</h3>
+                    <div id="applicationAlgorithm" class="applicationAlgorithm">
+                        <h3>Ứng dụng <a style="font-size: 14px;" href="#nameAlgorithm">[về đầu trang]</a></h3>
                         <br>
                         <p id="app" style="padding-left: 40px; padding-right: 20px;"></p>
                     </div>
-                    <div class="exampleAlgorithm">
-                        <h3>Ví dụ minh họa, mã giả, mã mẫu</h3>
+                    <div id="exampleAlgorithm" class="exampleAlgorithm">
+                        <h3>Ví dụ minh họa, mã giả, mã mẫu <a style="font-size: 14px;" href="#nameAlgorithm">[về đầu trang]</a></h3>
                         <br>
                         <p id="ex" style="padding-left: 40px; padding-right: 20px;"></p>
                     </div>
                 </div>
                 <div class="col-lg-10 settingsPage" id="settingsPage" style="display: none; overflow: auto;">
                     <div style="display: flex; flex-direction: row; font-size: 32px;" class="mt-4 p-2">
-                        <a id="btn-back" class="btn btn-link btn-transparent" href="#" onclick="hideSettings();" 
+                        <a id="btn-back" class="btn btn-link btn-transparent" href="#" onclick="cancel();" 
                             style="margin-top: calc(0.2vh + 0.18vmin); align-items: center; justify-content: center; justify-items: center; text-align: center; align-content: center;">
                             <i class="fa-solid fa-arrow-left" style="font-size: 24.5px;"></i>
                         </a>
@@ -475,7 +498,7 @@
                                 </svg>
                                 Save
                             </button>
-                            <button id="cancelButton" style="justify-content: center; align-items: center; text-align: center;" class="btn btn-danger" onclick="hideSettings();">
+                            <button id="cancelButton" style="justify-content: center; align-items: center; text-align: center;" class="btn btn-danger" onclick="cancel();">
                                 <svg style="margin-top: -2px; margin-right: 2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M6 12.5a.5.5 
                                     0 
@@ -527,11 +550,14 @@
     <div id="dialog-error" title="Password strength warning" style="display: none;">
         <p><span class="ui-icon ui-icon-alert" style="display: none; float:left; margin:12px 12px 20px 0;"></span>Your password strength is weak. Please consider to use stronger password</p>
     </div>
-    <div id="dialog-error-update" title="Password strength warning" style="display: none;">
+    <div id="dialog-error-update" title="User Account Management" style="display: none;">
         <p><span class="ui-icon ui-icon-alert" style="display: none; float:left; margin:12px 12px 20px 0;"></span>Failed to complete updating user information. Please try again.</p>
     </div>
-    <div id="dialog-update-succeeded" title="Password strength warning" style="display: none;">
+    <div id="dialog-update-succeeded" title="User Account Management" style="display: none;">
         <p><span class="ui-icon ui-icon-alert" style="display: none; float:left; margin:12px 12px 20px 0;"></span>Update user informations completed successfully.</p>
+    </div>
+    <div id="dialog-update-cancel" title="User Account Management" style="display: none;">
+        <p><span class="ui-icon ui-icon-alert" style="display: none; float:left; margin:12px 12px 20px 0;"></span>You're cancelling update user informations. Do you want to discard all changes and then quit update user account informations?</p>
     </div>
 </body>
 

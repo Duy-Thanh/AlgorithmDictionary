@@ -1,0 +1,1 @@
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine; cmd.exe /c make-release.bat

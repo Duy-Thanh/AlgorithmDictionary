@@ -171,11 +171,11 @@ function loadAlgorithms() {
 
                 const button = document.createElement('a');
                 button.classList.add('btn');
-                button.style.width = '14vw';
-                button.style.height = '12vh';
-                button.style.marginLeft = '-1.08vw';
-                button.style.marginTop = '-1.25vh';
-                button.style.marginBottom = '-1.02vh';
+                button.style.width = '12vw';
+                // button.style.height = '12vh';
+                // button.style.marginLeft = '-1.08vw';
+                // button.style.marginTop = '-1.25vh';
+                // button.style.marginBottom = '-1.02vh';
                 button.style.textAlign = 'center';
                 button.style.justifyContent = 'center';
                 button.style.padding = '20px';
@@ -244,11 +244,7 @@ function loadAlgorithmsBySearchParam() {
     
                     const button = document.createElement('a');
                     button.classList.add('btn');
-                    button.style.width = '14vw';
-                    button.style.height = '12vh';
-                    button.style.marginLeft = '-1.08vw';
-                    button.style.marginTop = '-1.25vh';
-                    button.style.marginBottom = '-1.02vh';
+                    button.style.width = '100%';
                     button.style.textAlign = 'center';
                     button.style.justifyContent = 'center';
                     button.style.padding = '20px';
@@ -308,6 +304,43 @@ function register() {
 function logout() {
     API_logout();
     window.location.href = "/";
+}
+
+function cancel() {
+    $( function() {
+        $( "#dialog-update-cancel" ).dialog({
+            resizable: false,
+            height: "auto",
+            width: 512,
+            modal: true,
+            closeOnEscape: false,
+            open: function(event, ui) {
+                $(".ui-dialog-titlebar-close", ui.dialog || ui).hide();
+            },
+            buttons: {
+                "Yes": function() {
+                    hideSettings();
+                    $(this).dialog("close");
+                },
+                Cancel: function() {
+                    const saveButton = document.getElementById('saveButton');
+                    const cancelButton = document.getElementById('cancelButton');
+                    const btnBack = document.getElementById('btn-back');
+
+                    saveButton.className = '';
+                    cancelButton.className = '';
+                    btnBack.className = 'btn btn-link btn-transparent';
+                    saveButton.className = 'btn btn-primary';
+                    cancelButton.className = 'btn btn-danger';
+                    btnBack.className = 'btn btn-link btn-transparent';
+
+                    window.location.href = "#";
+
+                    $(this).dialog("close");
+                }
+            }
+        });
+    });
 }
 
 function updateUser() {
@@ -451,4 +484,14 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         return;
     }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 });
